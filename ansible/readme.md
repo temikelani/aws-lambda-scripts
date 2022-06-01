@@ -45,14 +45,20 @@
 
 # CLI : Call Playbook <a id=''></a> ([go to top](#top))
 
-```bash
-ansible-playbook -i `path-to/inventory.txt` `path-to/main.yml` --private-key=`path-to/private-key.pem`
-```
+  ```bash
+  ansible-playbook -i `path-to/inventory.txt` `path-to/main.yml` --private-key=`path-to/private-key.pem`
+  ```
 <br>
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# Ansible Config : Host Key Checking <a id=''></a> ([go to top](#top))
+  
+  ```cfg
+  [defaults]
+  host_key_checking = False
+  ```
+
 
 
 <br>
