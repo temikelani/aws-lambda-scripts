@@ -6,7 +6,7 @@
 # Contents
 
 - [Create New Repo](#1)
-- [](#2)
+- [Reset Git ignore](#2)
 - [](#3)
 - [](#4)
 - [](#5)
