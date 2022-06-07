@@ -59,7 +59,12 @@
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# Reset Git ignore <a id=''></a> ([go to top](#top))
+
+```
+git rm -rf --cached .
+git add .
+```
 
 <br>
 <br>
