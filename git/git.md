@@ -7,7 +7,7 @@
 
 - [Create New Repo](#1)
 - [Reset Git ignore](#2)
-- [](#3)
+- [Custom Git Ignore](#3)
 - [](#4)
 - [](#5)
 - [](#6)
@@ -70,7 +70,18 @@ git add .
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# Custom Git Ignore <a id='3'></a> ([go to top](#top))
+
+```
+*.cer
+*.pem
+*.ppk
+**/node_modules/
+
+new_user_credentials.csv
+
+.DS_Store
+```
 
 <br>
 <br>
