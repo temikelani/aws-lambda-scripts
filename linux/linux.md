@@ -25,7 +25,7 @@
   - [](#17)
   - [](#18)
   - [](#19)
-  - [cat, tar, exit, less, q, man, stat](#20)
+  - [cat, tar, exit, less, q, man, grep, date, stat](#20)
 - [Package Managers & Installations](#)
   - [](#)
   - [](#)
