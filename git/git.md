@@ -80,6 +80,15 @@ git add .
 
 new_user_credentials.csv
 
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
 .DS_Store
 ```
 
