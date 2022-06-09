@@ -67,9 +67,12 @@
 <br>
 
 # Essential Commands <a id='com'></a> ([go to top](#top))
+
 - Links for later
+  - https://github.com/temikelani/cloud-training-path/tree/main/linux/nana-bootcamp
+  - https://github.com/temikelani/cheatsheets/blob/main/linux/linux.md
   - https://linuxize.com/post/how-to-use-rsync-for-local-and-remote-data-transfer-and-synchronization/
-<br>
+    <br>
 
 ## `ls` <a id='ls'></a> ([go to top](#top))
 
@@ -231,8 +234,8 @@
 
 - [Documentation](https://linuxize.com/post/how-to-copy-files-and-directories-in-linux/) || [and](https://linuxize.com/post/cp-command-in-linux/)
 - usage: `cp [OPTIONS] SOURCE... DESTINATION`
-- run `cp file file_backup`  to copy a file named file.txt to file_backup.txt
-- run  `cp file.txt /backup` to copy the file file.txt to the /backup directory
+- run `cp file file_backup` to copy a file named file.txt to file_backup.txt
+- run `cp file.txt /backup` to copy the file file.txt to the /backup directory
 - run `cp file.txt /backup/new_file.txt` to copy the file to the specified directory as new_file.txt
 - By default, if the destination file exists, it is overwritten. `The -n option tells cp not to overwrite an existing file.`
 - run `cp -i file.txt file_backup.txt` to force a prompt
@@ -241,10 +244,10 @@
 - run `cp -RT Pictures Pictures_backup` to copy only the files and subdirectories but not the source directory,
   - another way is to run `cp -RT Pictures/* Pictures_backup/`
   - however it does not copy the hidden files and directories (the ones starting with a dot .):
-- run `cp file.txt dir file1.txt  dir1` to copy multiple files and directories at once
+- run `cp file.txt dir file1.txt dir1` to copy multiple files and directories at once
   - specify their names and use the destination directory as the last argument:
 - run `cp -p file.txt file_backup.txt` to preserve the file mode, ownership , and timestamps :
-  - By default, when using the cp command to copy a file, the new file will be owned by the user performing the command. Use the -p option 
+  - By default, when using the cp command to copy a file, the new file will be owned by the user performing the command. Use the -p option
 - run `cp -v file.txt file_backup.txt` to print what is being done
 - run `cp *.png /backup` to copy all png files
 - run `rsync -a file.txt file_backup.txt` to copy a single file from one to another location
