@@ -1,4 +1,4 @@
-# ... Cheat Sheet/Notes <a id ='top'></a>
+# Linux Cheat Sheet/Notes <a id ='top'></a>
 
 <br>
 <br>
@@ -14,7 +14,7 @@
   - [wildcards](#6)
   - [rm](#7)
   - [mv](#8)
-  - [](#9)
+  - [cp](#9)
   - [](#10)
   - [](#11)
   - [](#12)
@@ -124,7 +124,7 @@
 
 <br>
 
-# mkdir <a id='4'></a> ([go to top](#top))
+## mkdir <a id='4'></a> ([go to top](#top))
 
 <details>
 <summary>create a directory</summary>
@@ -140,10 +140,8 @@
 </details>
 
 <br>
-<br>
-<br>
 
-# touch <a id='5'></a> ([go to top](#top))
+## touch <a id='5'></a> ([go to top](#top))
 
 <details>
 <summary>Update the timestamps on existing files and directories as well as creating new, empty files.</summary>
@@ -154,9 +152,8 @@
 </details>
 
 <br>
-<br>
 
-# wildcards <a id='6'></a> ([go to top](#top))
+## wildcards <a id='6'></a> ([go to top](#top))
 
 <details>
 <summary> Select all that meet the criteria </summary>
@@ -177,7 +174,7 @@
 <br>
 <br>
 
-# rm <a id='7'></a> ([go to top](#top))
+## rm <a id='7'></a> ([go to top](#top))
 
 <details>
 
@@ -199,10 +196,8 @@
 </details>
 
 <br>
-<br>
-<br>
 
-# mv <a id='8'></a> ([go to top](#top))
+## mv <a id='8'></a> ([go to top](#top))
 
 <details>
 
@@ -227,10 +222,8 @@
 </details>
 
 <br>
-<br>
-<br>
 
-# cp <a id=''></a> ([go to top](#top))
+## cp <a id=''></a> ([go to top](#top))
 
 <details>
 
@@ -243,8 +236,6 @@
 
 </details>
 
-<br>
-<br>
 <br>
 
 # Title <a id=''></a> ([go to top](#top))
