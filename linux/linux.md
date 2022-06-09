@@ -99,7 +99,7 @@
 
 <br>
 
-## cd <a id='cd'></a> ([go to top](#top))
+## `cd` <a id='cd'></a> ([go to top](#top))
 
 <details>
 <summary>change the working directory</summary>
@@ -129,7 +129,7 @@
 
 <br>
 
-## mkdir <a id='mkdir></a> ([go to top](#top))
+## `mkdir` <a id='mkdir'></a> ([go to top](#top))
 
 <details>
 <summary>create a directory</summary>
@@ -146,7 +146,7 @@
 
 <br>
 
-## touch <a id='touch'></a> ([go to top](#top))
+## `touch` <a id='touch'></a> ([go to top](#top))
 
 <details>
 <summary>Update the timestamps on existing files and directories as well as creating new, empty files.</summary>
@@ -158,7 +158,7 @@
 
 <br>
 
-## wildcards <a id='*'></a> ([go to top](#top))
+## `wildcards` <a id='*'></a> ([go to top](#top))
 
 <details>
 <summary> Select all that meet the criteria </summary>
@@ -177,7 +177,7 @@
 
 <br>
 
-## rm <a id='rm'></a> ([go to top](#top))
+## `rm` <a id='rm'></a> ([go to top](#top))
 
 <details>
 
@@ -200,7 +200,7 @@
 
 <br>
 
-## mv <a id='mv'></a> ([go to top](#top))
+## `mv` <a id='mv'></a> ([go to top](#top))
 
 <details>
 
@@ -226,7 +226,7 @@
 
 <br>
 
-## cp <a id='cp'></a> ([go to top](#top))
+## `cp` <a id='cp'></a> ([go to top](#top))
 
 <details>
 
