@@ -1,4 +1,4 @@
-# ... Cheat Sheet/Notes <a id ='top'></a>
+# Terraform Cheat Sheet/Notes <a id ='top'></a>
 
 <br>
 <br>
@@ -12,10 +12,10 @@
 - [`terraform destroy`](#4)
 - [`terraform state`](#5)
 - [`terraform workspace`](#6)
-- [](#7)
-- [](#8)
-- [](#9)
-- [](#10)
+- [`terraforn import`](#7)
+- [Setup Credentials](#8)
+- [`terraform validate `](#9)
+- [aws required providers](#10)
 - [](#11)
 - [](#12)
 - [](#13)
@@ -36,7 +36,7 @@
 - [](#)
 - [](#)
 - [](#)
-- [](#)
+- [console, format, output, expressions, functions](#)
 - [go to top](#top)
 
 <br>
@@ -44,8 +44,8 @@
 <br>
 
 # Resources <a id='0'></a> ([go to top](#top))
-- [Terraform Commands](https://www.terraform.io/cli/commands)
 
+- [Terraform Commands](https://www.terraform.io/cli/commands)
 
 <br>
 <br>
@@ -58,7 +58,6 @@
 ```
 terraform init
 ```
-
 
 <br>
 <br>
@@ -96,6 +95,11 @@ Usage: terraform apply [options] [plan file]
 ```
 terraform apply
 terraform apply -auto-approve
+```
+
+```
+terraform apply -var-file='="./dev.tfvars"
+terraform apply -var-file='="./prod.tfvars"
 ```
 
 <br>
@@ -150,7 +154,7 @@ terraform state show 'packet_device.worker[0]'
 terraform state mv -state-out=../project-1/terraform.tfstate aws_vpc.main aws_vpc.my_vpc
 
 # rename a resource
-terraform state mv packet_device.worker packet_device.helper 
+terraform state mv packet_device.worker packet_device.helper
 
 # move resource into a module
 terraform state mv packet_device.worker module.worker.packet_device.worker
@@ -179,14 +183,17 @@ Usage: terraform workspace new [OPTIONS] NAME [DIR]
 terraform workspace --help
 terraform workspace list
 ```
+
 ```
 terraform workspace new dev
 terraform workspace new -state=old.terraform.tfstate example
 ```
+
 ```
 terraform workspace select dev
 terraform workspace select default
 ```
+
 ```
 terraform workspace delete dev # delete dev workspace
 ```
@@ -207,12 +214,68 @@ Usage: terraform import [options] ADDRESS ID
 # terraform import <resource_type>.<resource_identifier> <value>
 terraform import aws_vpc.example vpc-0ce9e2544b6d49d97
 ```
+
 ```terraform
 resource "aws_vpc" "example" {
   # (resource arguments)
 }
 ```
 
+<br>
+<br>
+<br>
+
+# Setup Credentials <a id='8'></a> ([go to top](#top))
+
+```
+export AWS_ACCESS_KEY_ID=shjakvbslavbdsvbd
+export AWS_SECRET_ACCESS_KEY=hsjalbfhvsalvfsavfuasobv
+terraform refresh
+```
+
+```
+provider "aws" {
+  shared_config_files      = ["~/.aws/conf"]
+  shared_credentials_files = ["~/.aws/creds"]
+  profile                  = "terraform"
+}
+```
+
+<br>
+<br>
+<br>
+
+# `terraform validate` <a id='9'></a> ([go to top](#top))
+
+[Documentation](https://www.terraform.io/cli/commands/validate)
+
+```
+Usage: terraform validate [options]
+```
+
+<br>
+<br>
+<br>
+
+# aws required providers <a id='10'></a> ([go to top](#top))
+
+[Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+
+```
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-east-1"
+}
+```
 
 <br>
 <br>
@@ -220,6 +283,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -227,6 +295,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -234,6 +307,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -241,6 +319,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -248,6 +331,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -255,6 +343,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -262,6 +355,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -269,6 +367,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -276,6 +379,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -283,6 +391,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -290,6 +403,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -297,6 +415,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -304,6 +427,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -311,6 +439,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -318,6 +451,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -325,6 +463,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -332,6 +475,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -339,6 +487,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -346,6 +499,11 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
 
 <br>
 <br>
@@ -353,162 +511,10 @@ resource "aws_vpc" "example" {
 
 # Title <a id=''></a> ([go to top](#top))
 
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
 <br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
+```
 
+```
