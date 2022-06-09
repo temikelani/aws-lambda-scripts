@@ -11,9 +11,9 @@
   - [pwd](#3)
   - [mkdir](#4)
   - [touch](#5)
-  - [](#6)
-  - [](#7)
-  - [](#8)
+  - [wildcards](#6)
+  - [rm](#7)
+  - [mv](#8)
   - [](#9)
   - [](#10)
   - [](#11)
@@ -66,10 +66,6 @@
 <br>
 
 # Essential Commands <a id='com'></a> ([go to top](#top))
-
-<details>
-<summary> Expand to see commands </summary>
-</details>
 
 <br>
 
@@ -138,7 +134,7 @@
 - run `mkdir /tmp/newdir` to create a directory `newdir` in the `/tmp` directory
 - run `mkdir -p /home/linuxize/Music/Rock/Gothic` to create the directory `Gothic` in that path
 - run `mkdir -p /home/linuxize/Music/Rock/Gothic` if the parent directories do not exist
-- run `mkdir -m 700 newdir` to create the directory `newdir`
+- run `mkdir -m 700 newdir` to create the directory `newdir` with `700` permissions
 - run `mkdir dir1 dir2 dir3` to create multiple directories
 - run `mkdir -p Music/{Jazz/Blues,Folk,Disco,Rock/{Gothic,Punk,Progressive},Classical/Baroque/Early}` to create a directory tree
 </details>
@@ -147,7 +143,7 @@
 <br>
 <br>
 
-# touch <a id=''></a> ([go to top](#top))
+# touch <a id='5'></a> ([go to top](#top))
 
 <details>
 <summary>Update the timestamps on existing files and directories as well as creating new, empty files.</summary>
@@ -160,35 +156,92 @@
 <br>
 <br>
 
-# wildcards <a id=''></a> ([go to top](#top))
+# wildcards <a id='6'></a> ([go to top](#top))
 
-- `*` to select all files
-- `g*` to select any files starting with `g`
-- `b*.txt` to select any files starting with `b` and ends in `.txt`
-- `data???` to select any files beginning `data`
-- `[abc]*` to select any files starting with an `a,b or c`
-- `backup.[0-9][0-9]` to selct any files starting with `backup.` and ending with 2 numerals
-- `[[:upper]]*` to select any files starting with an uppercase
-- `[![:digit]]*` to select any files that do not begin with a numeral
--
+<details>
+<summary> Select all that meet the criteria </summary>
 
-<br>
-<br>
-<br>
+- usage; `ls | grep *` `ls | grep g*` etc
+- `*` to select all `files`
+- `g*` to select any `files` starting with `g`
+- `b*.txt` to select any `files` starting with `b` and ends in `.txt`
+- `data???` to select any `files` beginning `data`
+- `[abc]*` to select any `files` starting with an `a,b or c`
+- `backup.[0-9][0-9]` to selct any `files` starting with `backup.` and ending with 2 numerals
+- `[[:upper]]*` to select any `files` starting with an uppercase
+- `[![:digit]]*` to select any `files` that do not begin with a numeral
 
-# Title <a id=''></a> ([go to top](#top))
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
+</details>
 
 <br>
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# rm <a id='7'></a> ([go to top](#top))
+
+<details>
+
+<summary> Delete a file or directory</summary>
+
+- [Documentation](https://linuxize.com/post/rm-command-in-linux/)
+- usage: `rm [OPTIONS]... FILE...`
+- run `rm filename` to delete a file
+- run `rm -v filename` to get info on what;s being removed
+- run `rm -f filename` r to not prompt the user and to ignore nonexistent files and arguments.
+- run `rm filename1 filename2 filename3` to remove multiple files
+- run `rm *.png` to remove all files ending with `.png`
+- run `rm -d dirname` or `rmdir dirname` to remove an empty directory
+- run `rm -r dirname` to remove non-empty directories
+- run `rm -i filename1 filename2` to prompt the user before removal
+  - `rm -i filename1 filename2 filename3 filename4`
+- run `rm -rf dirname` to remove a diretory without being prompted
+
+</details>
+
+<br>
+<br>
+<br>
+
+# mv <a id='8'></a> ([go to top](#top))
+
+<details>
+
+<summary> Move/Rename a file or directory </summary>
+
+- [Documentation](https://linuxize.com/post/how-to-move-files-in-linux-with-mv-command/)
+- usage: `mv [OPTIONS] SOURCE DESTINATION`
+  - The `SOURCE can be one, or more files or directories`, and `DESTINATION can be a single file or directory`.
+- run `mv file1 /tmp` to move the file file1 from the current working directory to the /tmp directory 
+- run `mv -i file1 /tmp` to be prompted before overwiting if the destination `file1` already exists
+- run `mv -f file1 /tmp` to not be prompted
+- run `mv -n file1 /tmp` to never overwrite an existing file
+- run `mv -b file1 /tmp` to create a backup of the destination file if it exists
+  - The backup file will have the same name as the original file with a tilde (~) appended to it.
+- run `mv file1 file2` To rename a `file1` as `file2` (assuming `file2` doesn't exist)
+- run `mv dir1 dir2`
+  - `if the dir2 directory exists`, the command will `move dir1 inside dir2`. 
+  - `If dir2 doesn’t exist`, `dir1 will be renamed to dir2`:
+- run `mv file1 file2 dir1` to move the files `file1` and `file2` to the `dir1` directory
+- run `mv *.pdf ~/Documents` to move `all pdf files` from the `current directory` to the `~/Documents directory`
+
+</details>
+
+<br>
+<br>
+<br>
+
+# cp <a id=''></a> ([go to top](#top))
+
+<details>
+
+<summary> Move/Rename a file or directory </summary>
+
+- [Documentation](https://linuxize.com/post/how-to-move-files-in-linux-with-mv-command/)
+- usage: `mv [OPTIONS] SOURCE DESTINATION`
+  - The `SOURCE can be one, or more files or directories`, and `DESTINATION can be a single file or directory`.
+- run 
+
+</details>
 
 <br>
 <br>
