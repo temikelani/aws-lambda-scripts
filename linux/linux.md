@@ -171,8 +171,6 @@
 </details>
 
 <br>
-<br>
-<br>
 
 ## rm <a id='7'></a> ([go to top](#top))
 
@@ -206,7 +204,7 @@
 - [Documentation](https://linuxize.com/post/how-to-move-files-in-linux-with-mv-command/)
 - usage: `mv [OPTIONS] SOURCE DESTINATION`
   - The `SOURCE can be one, or more files or directories`, and `DESTINATION can be a single file or directory`.
-- run `mv file1 /tmp` to move the file file1 from the current working directory to the /tmp directory 
+- run `mv file1 /tmp` to move the file file1 from the current working directory to the /tmp directory
 - run `mv -i file1 /tmp` to be prompted before overwiting if the destination `file1` already exists
 - run `mv -f file1 /tmp` to not be prompted
 - run `mv -n file1 /tmp` to never overwrite an existing file
@@ -214,7 +212,7 @@
   - The backup file will have the same name as the original file with a tilde (~) appended to it.
 - run `mv file1 file2` To rename a `file1` as `file2` (assuming `file2` doesn't exist)
 - run `mv dir1 dir2`
-  - `if the dir2 directory exists`, the command will `move dir1 inside dir2`. 
+  - `if the dir2 directory exists`, the command will `move dir1 inside dir2`.
   - `If dir2 doesn’t exist`, `dir1 will be renamed to dir2`:
 - run `mv file1 file2 dir1` to move the files `file1` and `file2` to the `dir1` directory
 - run `mv *.pdf ~/Documents` to move `all pdf files` from the `current directory` to the `~/Documents directory`
@@ -232,7 +230,7 @@
 - [Documentation](https://linuxize.com/post/how-to-move-files-in-linux-with-mv-command/)
 - usage: `mv [OPTIONS] SOURCE DESTINATION`
   - The `SOURCE can be one, or more files or directories`, and `DESTINATION can be a single file or directory`.
-- run 
+- run
 
 </details>
 
