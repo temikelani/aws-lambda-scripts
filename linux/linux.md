@@ -6,15 +6,15 @@
 # Contents
 
 - [Essential Commands](#com)
-  - [ls](#1)
-  - [cd](#2)
-  - [pwd](#3)
-  - [mkdir](#4)
-  - [touch](#5)
-  - [wildcards](#6)
-  - [rm](#7)
-  - [mv](#8)
-  - [cp](#9)
+  - [ls](#ls)
+  - [cd](#cd)
+  - [pwd](#pwd)
+  - [mkdir](#mkdir)
+  - [touch](#touch)
+  - [wildcards](#*)
+  - [rm](#rm)
+  - [mv](#mv)
+  - [cp](#cp)
   - [](#10)
   - [](#11)
   - [](#12)
@@ -40,6 +40,7 @@
 - [Bash Scripting](#)
   - [](#)
   - [](#)
+  - [cron jobs](#)
 - [Tips & Tricks](#tip)
   - [Multple commands](#)
   - [space between commands](#)
@@ -53,7 +54,7 @@
   - [](#)
 - [SSH](#)
   - [](#)
-  - [ssh, scp, ](#)
+  - [ssh, scp, rsync](#)
 - [](#)
 - [](#)
 - [](#)
@@ -66,10 +67,11 @@
 <br>
 
 # Essential Commands <a id='com'></a> ([go to top](#top))
-
+- Links for later
+  - https://linuxize.com/post/how-to-use-rsync-for-local-and-remote-data-transfer-and-synchronization/
 <br>
 
-## `ls` <a id='1'></a> ([go to top](#top))
+## `ls` <a id='ls'></a> ([go to top](#top))
 
 <details>
 
@@ -94,7 +96,7 @@
 
 <br>
 
-## cd <a id='2'></a> ([go to top](#top))
+## cd <a id='cd'></a> ([go to top](#top))
 
 <details>
 <summary>change the working directory</summary>
@@ -113,7 +115,7 @@
 
 <br>
 
-## `pwd` <a id='3'></a> ([go to top](#top))
+## `pwd` <a id='pwd'></a> ([go to top](#top))
 
 <details>
 <summary>view the current working directory</summary>
@@ -124,7 +126,7 @@
 
 <br>
 
-## mkdir <a id='4'></a> ([go to top](#top))
+## mkdir <a id='mkdir></a> ([go to top](#top))
 
 <details>
 <summary>create a directory</summary>
@@ -141,7 +143,7 @@
 
 <br>
 
-## touch <a id='5'></a> ([go to top](#top))
+## touch <a id='touch'></a> ([go to top](#top))
 
 <details>
 <summary>Update the timestamps on existing files and directories as well as creating new, empty files.</summary>
@@ -153,7 +155,7 @@
 
 <br>
 
-## wildcards <a id='6'></a> ([go to top](#top))
+## wildcards <a id='*'></a> ([go to top](#top))
 
 <details>
 <summary> Select all that meet the criteria </summary>
@@ -172,7 +174,7 @@
 
 <br>
 
-## rm <a id='7'></a> ([go to top](#top))
+## rm <a id='rm'></a> ([go to top](#top))
 
 <details>
 
@@ -195,7 +197,7 @@
 
 <br>
 
-## mv <a id='8'></a> ([go to top](#top))
+## mv <a id='mv'></a> ([go to top](#top))
 
 <details>
 
@@ -221,16 +223,32 @@
 
 <br>
 
-## cp <a id=''></a> ([go to top](#top))
+## cp <a id='cp'></a> ([go to top](#top))
 
 <details>
 
 <summary> Move/Rename a file or directory </summary>
 
-- [Documentation](https://linuxize.com/post/how-to-move-files-in-linux-with-mv-command/)
-- usage: `mv [OPTIONS] SOURCE DESTINATION`
-  - The `SOURCE can be one, or more files or directories`, and `DESTINATION can be a single file or directory`.
-- run
+- [Documentation](https://linuxize.com/post/how-to-copy-files-and-directories-in-linux/) || [and](https://linuxize.com/post/cp-command-in-linux/)
+- usage: `cp [OPTIONS] SOURCE... DESTINATION`
+- run `cp file file_backup`  to copy a file named file.txt to file_backup.txt
+- run  `cp file.txt /backup` to copy the file file.txt to the /backup directory
+- run `cp file.txt /backup/new_file.txt` to copy the file to the specified directory as new_file.txt
+- By default, if the destination file exists, it is overwritten. `The -n option tells cp not to overwrite an existing file.`
+- run `cp -i file.txt file_backup.txt` to force a prompt
+- run `cp -R Pictures Pictures_backup` to copy a directory, including all its files and subdirectories, use the -R or -r option.
+  - `we are copying the directory Pictures to Pictures_backup`
+- run `cp -RT Pictures Pictures_backup` to copy only the files and subdirectories but not the source directory,
+  - another way is to run `cp -RT Pictures/* Pictures_backup/`
+  - however it does not copy the hidden files and directories (the ones starting with a dot .):
+- run `cp file.txt dir file1.txt  dir1` to copy multiple files and directories at once
+  - specify their names and use the destination directory as the last argument:
+- run `cp -p file.txt file_backup.txt` to preserve the file mode, ownership , and timestamps :
+  - By default, when using the cp command to copy a file, the new file will be owned by the user performing the command. Use the -p option 
+- run `cp -v file.txt file_backup.txt` to print what is being done
+- run `cp *.png /backup` to copy all png files
+- run `rsync -a file.txt file_backup.txt` to copy a single file from one to another location
+- run `rsync -a /var/www/public_html/ /var/www/public_html_backup/` to copy a directory:
 
 </details>
 
