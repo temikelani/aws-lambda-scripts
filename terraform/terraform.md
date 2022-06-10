@@ -36,7 +36,7 @@
 - [](#)
 - [](#)
 - [](#)
-- [console, format, output, expressions, functions](#)
+- [refresh, console, format, output, expressions, functions](#)
 - [go to top](#top)
 
 <br>
@@ -196,6 +196,12 @@ terraform workspace select default
 
 ```
 terraform workspace delete dev # delete dev workspace
+```
+
+```
+resource "aws_sqs_queue" "queue" {
+    name = "${terraform.workspace}-queue"
+}
 ```
 
 <br>
