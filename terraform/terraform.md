@@ -36,7 +36,7 @@
 - [](#)
 - [](#)
 - [](#)
-- [refresh, console, format, output, expressions, functions, cudr subnet](#)
+- [refresh, console, format, output, expressions, provisioner, lookup functions, type-object, cudr subnet](#)
 - [go to top](#top)
 
 <br>
