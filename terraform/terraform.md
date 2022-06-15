@@ -21,7 +21,11 @@
 - [`terraform console`](#13)
 - [variables](#14)
   - [variables: `string`](#14a)
-  - [variables: `list(string)`](#14)
+  - [variables: `object`](#14b)
+  - [variables: `map`](#14c)
+  - [variables: `number`](#14d)
+  - [variables: `list(string)`](#14e)
+  - [variables: `list(map`](#14f)
 - [](#15)
 - [](#16)
 - [](#17)
@@ -358,7 +362,11 @@ provider "aws" {
 
 # aws multiple providers (multi-region) <a id='11'></a> ([go to top](#top))
 
-```
+<details>
+<summary> Expand For Details </summary>
+<br>
+
+```terraform
 terraform {
   required_providers {
     aws = {
@@ -387,11 +395,17 @@ resource "aws_vpc" "ohio_vpc" {
 }
 ```
 
+</details>
+
 <br>
 <br>
 <br>
 
 # `terraform show` <a id='12'></a> ([go to top](#top))
+
+<details>
+<summary> Expand For Details </summary>
+<br>
 
 - [Documentation](https://www.terraform.io/cli/commands/show/)
 - `provide human-readable output from a state or plan file.`
@@ -400,11 +414,17 @@ resource "aws_vpc" "ohio_vpc" {
 Usage: terraform show [options] [file]
 ```
 
+</details>
+
 <br>
 <br>
 <br>
 
 # `terraform console`<a id='13'></a> ([go to top](#top))
+
+<details>
+<summary> Expand For Details </summary>
+<br>
 
 - [Documentation](https://www.terraform.io/cli/commands/console)
 - provides an interactive command-line console for evaluating and experimenting with expressions.
@@ -413,7 +433,7 @@ Usage: terraform show [options] [file]
 Usage: terraform console [options]
 ```
 
-```terraforom
+```terraform
 variable "apps" {
   type = map(any)
   default = {
@@ -448,6 +468,8 @@ terraform console
 "255.240.0.0"
 ```
 
+</details>
+
 <br>
 <br>
 <br>
@@ -479,8 +501,8 @@ variable "image_id" {
 ```terraform
 terraform apply -var-file="testing.tfvars"
 ```
-</details>
 
+</details>
 
 <br>
 
