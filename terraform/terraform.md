@@ -269,7 +269,7 @@ resource "aws_vpc" "dev" {
 ``` 
 aws configure
 ```
-- Or You can set the credentilas as env vars
+- Or you can set the credentials as env vars
 
 ```
 export AWS_ACCESS_KEY_ID=shjakvbslavbdsvbd
