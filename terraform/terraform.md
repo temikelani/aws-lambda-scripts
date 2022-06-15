@@ -59,11 +59,17 @@
 
 # `terraform init` <a id='1'></a> ([go to top](#top))
 
-[Documentation](https://www.terraform.io/cli/commands/init)
+<details>
+<summary> Expand For Details </summary>
+<br>
 
-```
+- [Documentation](https://www.terraform.io/cli/commands/init)
+
+```bash
 terraform init
 ```
+
+</details>
 
 <br>
 <br>
@@ -71,20 +77,26 @@ terraform init
 
 # `terraform plan` <a id='2'></a> ([go to top](#top))
 
-[Documentation](https://www.terraform.io/cli/commands/plan)
+<details>
+<summary> Expand For Details </summary>
+<br>
+
+- [Documentation](https://www.terraform.io/cli/commands/plan)
 
 ```
 Usage: terraform plan [options]
 ```
 
-```
+```bash
 terraform plan
 ```
 
-```
+```bash
 terraform plan -out [plan-name]
 terraform plan -out=[FILENAME]
 ```
+
+</details>
 
 <br>
 <br>
@@ -92,21 +104,27 @@ terraform plan -out=[FILENAME]
 
 # `terraform apply` <a id='3'></a> ([go to top](#top))
 
-[Documentation](https://www.terraform.io/cli/commands/apply)
+<details>
+<summary> Expand For Details </summary>
+<br>
+
+- [Documentation](https://www.terraform.io/cli/commands/apply)
 
 ```
 Usage: terraform apply [options] [plan file]
 ```
 
-```
+```bash
 terraform apply
 terraform apply -auto-approve
 ```
 
+```bash
+terraform apply -var-file="./dev.tfvars"
+terraform apply -var-file="./prod.tfvars"
 ```
-terraform apply -var-file='="./dev.tfvars"
-terraform apply -var-file='="./prod.tfvars"
-```
+
+</details>
 
 <br>
 <br>
@@ -114,21 +132,32 @@ terraform apply -var-file='="./prod.tfvars"
 
 # `terraform destroy` <a id='4'></a> ([go to top](#top))
 
-[Documentation](https://www.terraform.io/cli/commands/destroy)
+<details>
+<summary> Expand For Details </summary>
+<br>
+
+- [Documentation](https://www.terraform.io/cli/commands/destroy)
 
 ```
 Usage: terraform destroy [options]
 ```
 
-```
+```bash
+terraform destroy
 terraform destroy -auto-approve
 ```
+
+</details>
 
 <br>
 <br>
 <br>
 
 # `terraform state` <a id='5'></a> ([go to top](#top))
+
+<details>
+<summary> Expand For Details </summary>
+<br>
 
 - [Documentation](https://www.terraform.io/cli/commands/state/list)
 - [Documentation](https://www.terraform.io/cli/commands/state/show)
@@ -142,7 +171,7 @@ Usage: terraform state mv [options] SOURCE DESTINATION
 Usage: terraform state rm [options] ADDRESS...
 ```
 
-```
+```bash
 terraform state list
 terraform state list -state=path-to-state-file
 terraform state list aws_instance.bar
@@ -150,13 +179,13 @@ terraform state list module.elb
 terraform state list -id=sg-1234abcd
 ```
 
-```
+```bash
 terraform state show 'packet_device.worker'
 terraform state show 'module.foo.packet_device.worker'
 terraform state show 'packet_device.worker[0]'
 ```
 
-```
+```bash
 terraform state mv -state-out=../project-1/terraform.tfstate aws_vpc.main aws_vpc.my_vpc
 
 # rename a resource
@@ -167,11 +196,17 @@ terraform state mv packet_device.worker module.worker.packet_device.worker
 terraform state mv packet_device.worker module.worker.packet_device.main
 ```
 
+</details>
+
 <br>
 <br>
 <br>
 
 # `terraform workspace` <a id='6'></a> ([go to top](#top))
+
+<details>
+<summary> Expand For Details </summary>
+<br>
 
 - [Documentation](https://www.terraform.io/cli/commands/workspace/list)
 - [Documentation](https://www.terraform.io/cli/commands/workspace/select)
@@ -185,30 +220,32 @@ Usage: terraform workspace select NAME [DIR]
 Usage: terraform workspace new [OPTIONS] NAME [DIR]
 ```
 
-```
+```bash
 terraform workspace --help
 terraform workspace list
 ```
 
-```
+```bash
 terraform workspace new dev
 terraform workspace new -state=old.terraform.tfstate example
 ```
 
-```
+```bash
 terraform workspace select dev
 terraform workspace select default
 ```
 
-```
+```bash
 terraform workspace delete dev # delete dev workspace
 ```
 
-```
+```terraform
 resource "aws_sqs_queue" "queue" {
     name = "${terraform.workspace}-queue"
 }
 ```
+
+</details>
 
 <br>
 <br>
@@ -216,22 +253,26 @@ resource "aws_sqs_queue" "queue" {
 
 # `terraform import` <a id='7'></a> ([go to top](#top))
 
-[Documentation](https://www.terraform.io/cli/commands/import)
+<details>
+<summary> Expand For Details </summary>
+<br>
 
-```
+- [Documentation](https://www.terraform.io/cli/commands/import)
+
+```bash
 Usage: terraform import [options] ADDRESS ID
 ```
 
 - Obtain the ID of the resource you want to import
 - `terraform import <resource_type>.<resource_identifier> <value>`
 
-```
+```bash
 terraform import aws_vpc.dev vpc-0ce9e2544b6d49d97
 ```
 
 - OR
 
-```
+```bash
 VpcID=$(aws ec2 describe-vpcs --region us-west-2 --filters Name=tag:Name,Values='Web VPC' --output text --query "Vpcs[].VpcId")
 terraform import aws_vpc.dev $VpcID
 ```
@@ -265,41 +306,46 @@ resource "aws_vpc" "dev" {
 }
 ```
 
+</details>
+
 <br>
 <br>
 <br>
 
 # Setup Credentials <a id='8'></a> ([go to top](#top))
 
+<details>
+<summary> Expand For Details </summary>
+<br>
+
 - [Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration)
+- Terraform will use default credentials set when you run
 
-- Terraform will puse default cret=dentials set when you run
-
-```
+```bash
 aws configure
 ```
 
 - Or you can set the credentials as env vars
 
-```
+```terraform
 provider "aws" {}
 ```
 
-```
+```bash
 export AWS_ACCESS_KEY_ID=shjakvbslavbdsvbd
 export AWS_SECRET_ACCESS_KEY=hsjalbfhvsalvfsavfuasobv
 export AWS_REGION="us-west-2"
 terraform plan
 ```
 
-```
+```bash
 export AWS_PROFILE
-AWS_CONFIG_FILE
+export AWS_CONFIG_FILE
 ```
 
 - Or you can supply tf the path for a specific set of credentials
 
-```
+```terraform
 provider "aws" {
   shared_config_files      = ["~/.aws/conf"]
   shared_credentials_files = ["~/.aws/creds"]
@@ -309,7 +355,7 @@ provider "aws" {
 
 - Or `terraform` can Assume a Role
 
-```
+```terraform
 provider "aws" {
   assume_role {
     role_arn     = "arn:aws:iam::123456789012:role/ROLE_NAME"
@@ -319,11 +365,17 @@ provider "aws" {
 }
 ```
 
+</details>
+
 <br>
 <br>
 <br>
 
 # `terraform validate` <a id='9'></a> ([go to top](#top))
+
+<details>
+<summary> Expand For Details </summary>
+<br>
 
 - [Documentation](https://www.terraform.io/cli/commands/validate)
 - Validate runs checks that verify whether a configuration is syntactically valid and internally consistent, regardless of any provided variables or existing state
@@ -332,15 +384,21 @@ provider "aws" {
 Usage: terraform validate [options]
 ```
 
+</details>
+
 <br>
 <br>
 <br>
 
 # aws required provider <a id='10'></a> ([go to top](#top))
 
-[Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+<details>
+<summary> Expand For Details </summary>
+<br>
 
-```
+- [Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+
+```terraform
 terraform {
   required_providers {
     aws = {
@@ -355,6 +413,8 @@ provider "aws" {
   region = "us-east-1"
 }
 ```
+
+</details>
 
 <br>
 <br>
