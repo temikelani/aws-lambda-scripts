@@ -15,9 +15,9 @@
 - [`terraforn import`](#7)
 - [Setup Credentials](#8)
 - [`terraform validate `](#9)
-- [aws required providers](#10)
-- [](#11)
-- [](#12)
+- [aws required provider](#10)
+- [aws multiple providers (multi-region)](#11)
+- [`terraform show`](#12)
 - [](#13)
 - [](#14)
 - [](#15)
@@ -283,7 +283,6 @@ provider "aws" {}
 export AWS_ACCESS_KEY_ID=shjakvbslavbdsvbd
 export AWS_SECRET_ACCESS_KEY=hsjalbfhvsalvfsavfuasobv
 export AWS_REGION="us-west-2"
-terraform refresh
 terraform plan
 ```
 
@@ -320,7 +319,8 @@ provider "aws" {
 
 # `terraform validate` <a id='9'></a> ([go to top](#top))
 
-[Documentation](https://www.terraform.io/cli/commands/validate)
+- [Documentation](https://www.terraform.io/cli/commands/validate)
+- Validate runs checks that verify whether a configuration is syntactically valid and internally consistent, regardless of any provided variables or existing state
 
 ```
 Usage: terraform validate [options]
@@ -330,7 +330,7 @@ Usage: terraform validate [options]
 <br>
 <br>
 
-# aws required providers <a id='10'></a> ([go to top](#top))
+# aws required provider <a id='10'></a> ([go to top](#top))
 
 [Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
@@ -338,8 +338,8 @@ Usage: terraform validate [options]
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
+      source = "hashicorp/aws"
+      version = "4.18.0"
     }
   }
 }
@@ -354,19 +354,57 @@ provider "aws" {
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# aws multiple providers (multi-region) <a id='11'></a> ([go to top](#top))
+
+```
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.12"
+    }
+  }
+}
+
+provider "aws" {
+    region = "us-east-1"
+}
+
+provider "aws" {
+    region = "us-east-2"
+    alias = "ohio"
+}
+
+resource "aws_vpc" "n_virginia_vpc" {
+    cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_vpc" "ohio_vpc" {
+    cidr_block = "10.1.0.0/16"
+    provider = "aws.ohio"
+}
+```
 
 <br>
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# `terraform show` <a id='12'></a> ([go to top](#top))
+
+- [Documentation](https://www.terraform.io/cli/commands/show/)
+- `provide human-readable output from a state or plan file.`
+
+```
+Usage: terraform show [options] [file]
+```
 
 <br>
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# terraform refresh <a id=''></a> ([go to top](#top))
+
+
 
 <br>
 <br>
