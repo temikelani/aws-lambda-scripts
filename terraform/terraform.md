@@ -216,14 +216,44 @@ resource "aws_sqs_queue" "queue" {
 Usage: terraform import [options] ADDRESS ID
 ```
 
+- Obtain the Id of teh resource you want to import
+
 ```
 # terraform import <resource_type>.<resource_identifier> <value>
-terraform import aws_vpc.example vpc-0ce9e2544b6d49d97
+terraform import aws_vpc.dev vpc-0ce9e2544b6d49d97
+
+#OR
+
+VpcID=$(aws ec2 describe-vpcs --region us-west-2 --filters Name=tag:Name,Values='Web VPC' --output text --query "Vpcs[].VpcId")
+terraform import aws_vpc.dev $VpcID
 ```
 
+- Run `terraform show` to get resource details for `aws_vpc.dev`
+
+```
+terraform show
+```
+
+- COpy the aadinable properties into your terraform file
+
 ```terraform
-resource "aws_vpc" "example" {
-  # (resource arguments)
+resource "aws_vpc" "dev" {
+    assign_generated_ipv6_cidr_block = false
+    cidr_block                       = "192.168.100.0/24"
+    enable_classiclink               = false
+    enable_classiclink_dns_support   = false
+    enable_dns_hostnames             = true
+    enable_dns_support               = true
+    instance_tenancy                 = "default"
+    tags                             = {
+        "Name"                        = "Web VPC"
+        "ca-creator"                  = "system"
+        "ca-environment"              = "production"
+        "ca-environment-session-id"   = "1282472"
+        "ca-environment-session-uuid" = "5e814446-6e90-46f8-81bd-cd7562e2328f"
+        "ca-persistent"               = "false"
+        "ca-scope"                    = "lab"
+    }
 }
 ```
 
