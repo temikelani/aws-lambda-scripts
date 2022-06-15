@@ -472,13 +472,17 @@ variable "image_id" {
 
 - Use a specific `tfvars file`
 
-```
+```terraform
 terraform apply -var-file="testing.tfvars"
 ```
 
 <br>
 
 ## variables: string <a id='14a'></a> ([go to top](#top))
+
+<details>
+<summary> Expand For Details </summary>
+<br>
 
 ```terraform
 variable "image_id" {
@@ -505,9 +509,15 @@ instance_type      = "t3.micro"
 image_id           = "ami-42895639563865395"
 ```
 
+</details>
+
 <br>
 
 ## variables: object <a id='14b'></a> ([go to top](#top))
+
+<details>
+<summary> Expand For Details </summary>
+<br>
 
 ```terraform
 variable "disk" {
@@ -589,9 +599,15 @@ disk = {
 }
 ```
 
+</details>
+
 <br>
 
 ## variables: map <a id='14c'></a> ([go to top](#top))
+
+<details>
+<summary> Expand For Details </summary>
+<br>
 
 ```terraform
 variable "amis" {
@@ -663,9 +679,15 @@ region = "us-east-1"
 os_type = "linux"
 ```
 
+</details>
+
 <br>
 
 ## variables: number <a id='14d'></a> ([go to top](#top))
+
+<details>
+<summary> Expand For Details </summary>
+<br>
 
 ```terraform
 variable "num"{
@@ -691,9 +713,9 @@ resource "aws_autoscaling_group" "asg" {
 }
 ```
 
+</details>
+
 <br>
-
-
 
 ## variables: list(string) <a id='14e'></a> ([go to top](#top))
 
@@ -701,50 +723,50 @@ resource "aws_autoscaling_group" "asg" {
 <summary> Expand For Details </summary>
 <br>
 
-  ```terraform
-  variable "availability_zones" {
+```terraform
+variable "availability_zones" {
+  type = list(string)
+}
+
+variable "security_group_ids" {
+    description = "Security group IDs assigned to the EC2 Instance"
     type = list(string)
-  }
-  
-  variable "security_group_ids" {
-      description = "Security group IDs assigned to the EC2 Instance"
-      type = list(string)
-  }
-  ```
-  
-  ```terraform
-  resource "aws_subnet" "subnet1" {
-    availability_zone = var.availability_zones[0]
-  }
-  
-  resource "aws_subnet" "subnet2" {
-    availability_zone = var.availability_zones[1]
-  }
-  
-  resource "aws_instance" "server" {
-      vpc_security_group_ids = var.security_group_ids
-  }
-  ```
-  
-  - Defining the variable
-  
-  ```terraform
-  module "webserver" {
-    security_group_ids = [aws_vpc.prod.default_security_group_id]
-  }
-  ```
-  
-  - `terraform.tfvars` file
-  
-  ```terraform
-  availability_zones = ["us-east-1a", "us-east-1b"]
-  ```
-  
+}
+```
+
+```terraform
+resource "aws_subnet" "subnet1" {
+  availability_zone = var.availability_zones[0]
+}
+
+resource "aws_subnet" "subnet2" {
+  availability_zone = var.availability_zones[1]
+}
+
+resource "aws_instance" "server" {
+    vpc_security_group_ids = var.security_group_ids
+}
+```
+
+- Defining the variable
+
+```terraform
+module "webserver" {
+  security_group_ids = [aws_vpc.prod.default_security_group_id]
+}
+```
+
+- `terraform.tfvars` file
+
+```terraform
+availability_zones = ["us-east-1a", "us-east-1b"]
+```
+
 </details>
 
 <br>
 
-## variables: list(map) <a id='14'></a> ([go to top](#top))
+## variables: list(map) <a id='14f'></a> ([go to top](#top))
 
 <details>
 <summary> Expand For Details </summary>
@@ -819,20 +841,21 @@ module "server" {
 <summary> Expand For Details </summary>
 <br>
 
-  ```terraform
-  
-  ```
-  
-  ```terraform
-  
-  ```
-  
-  - `terraform.tfvars file`
-  
-  ```terraform
-</details>
+```terraform
 
 ```
+
+```terraform
+
+```
+
+- `terraform.tfvars file`
+
+```terraform
+
+```
+
+</details>
 
 <br>
 
