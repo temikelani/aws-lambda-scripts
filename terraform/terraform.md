@@ -216,14 +216,16 @@ resource "aws_sqs_queue" "queue" {
 Usage: terraform import [options] ADDRESS ID
 ```
 
-- Obtain the Id of teh resource you want to import
+- Obtain the ID of the resource you want to import
+- `terraform import <resource_type>.<resource_identifier> <value>`
 
 ```
-# terraform import <resource_type>.<resource_identifier> <value>
 terraform import aws_vpc.dev vpc-0ce9e2544b6d49d97
+```
 
-#OR
+- OR
 
+```
 VpcID=$(aws ec2 describe-vpcs --region us-west-2 --filters Name=tag:Name,Values='Web VPC' --output text --query "Vpcs[].VpcId")
 terraform import aws_vpc.dev $VpcID
 ```
@@ -234,7 +236,7 @@ terraform import aws_vpc.dev $VpcID
 terraform show
 ```
 
-- COpy the aadinable properties into your terraform file
+- Copy the aadinable properties into your terraform file
 
 ```terraform
 resource "aws_vpc" "dev" {
