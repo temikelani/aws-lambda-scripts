@@ -769,11 +769,16 @@ variable "ebs_block_device" {
 
 ```terraform
 resource "aws_instance" "server" {
-  # Dynamic blocks can be used for resources that contain repeatable configuration blocks. Instead of repeating several ebs_block_device blocks, a dynamic block is used to simplify the code.
+  # Dynamic blocks can be used for resources that contain repeatable configuration blocks. 
+  # Instead of repeating several ebs_block_device blocks, a dynamic block is used to simplify the code.
 
-  # This is done by combining the dynamic block with a for_each loop inside. The first line inside the dynamic block is the for_each loop. The loop is iterating through the list of the ebs_block_device variable, which is a list of maps.
+  # This is done by combining the dynamic block with a for_each loop inside. 
+  # The first line inside the dynamic block is the for_each loop. 
+  # The loop is iterating through the list of the ebs_block_device variable, which is a list of maps.
 
-  # In the content block, each value of the map is referenced using the lookup function. The logic here is to look for a value in the map variable and if it's not there, set the value to null. The dynamic block will iterate through each map in the list:
+  # In the content block, each value of the map is referenced using the lookup function. 
+  # The logic here is to look for a value in the map variable and if it's not there, set the value to null. 
+  # The dynamic block will iterate through each map in the list:
 
   #dynamic block with for_each loop
   dynamic "ebs_block_device" {
