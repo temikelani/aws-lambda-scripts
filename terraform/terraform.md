@@ -454,6 +454,10 @@ terraform console
 
 # variables <a id='14'></a> ([go to top](#top))
 
+<details>
+<summary> Expand For Details </summary>
+<br>
+
 - [Documentation](https://www.terraform.io/language/values)
 
 - syntax
@@ -475,6 +479,8 @@ variable "image_id" {
 ```terraform
 terraform apply -var-file="testing.tfvars"
 ```
+</details>
+
 
 <br>
 
