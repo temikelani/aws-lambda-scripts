@@ -18,7 +18,7 @@
 - [aws required provider](#10)
 - [aws multiple providers (multi-region)](#11)
 - [`terraform show`](#12)
-- [](#13)
+- [`terraform console`](#13)
 - [](#14)
 - [](#15)
 - [](#16)
@@ -36,7 +36,7 @@
 - [](#)
 - [](#)
 - [](#)
-- [refresh, console, format, output, expressions, provisioner, lookup functions, type-object, cudr subnet](#)
+- [console, format, output, expressions, provisioner, lookup, length, cidr functions, locals, ariable types, type-object, cudr subnet](#)
 - [go to top](#top)
 
 <br>
@@ -402,21 +402,131 @@ Usage: terraform show [options] [file]
 <br>
 <br>
 
-# terraform refresh <a id=''></a> ([go to top](#top))
+# `terraform console`<a id='13'></a> ([go to top](#top))
 
+- [Documentation](https://www.terraform.io/cli/commands/console)
+- provides an interactive command-line console for evaluating and experimenting with expressions.
 
+```
+Usage: terraform console [options]
+```
+
+```terraforom
+variable "apps" {
+  type = map(any)
+  default = {
+    "foo" = {
+      "region" = "us-east-1",
+    },
+    "bar" = {
+      "region" = "eu-west-1",
+    },
+    "baz" = {
+      "region" = "ap-south-1",
+    },
+  }
+}
+
+resource "random_pet" "example" {
+  for_each = var.apps
+}
+```
+
+```bash
+terraform console
+```
+
+```terraform
+> var.apps.foo
+{
+  "region" = "us-east-1"
+}
+
+> cidrnetmask("172.16.0.0/12")
+"255.240.0.0"
+```
 
 <br>
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# variables <a id='14'></a> ([go to top](#top))
+
+- [Documentation](https://www.terraform.io/language/values)
+
+- syntax
+
+```terraform
+variable "image_id" {
+  type        = string
+  description = "The id of the machine image (AMI) to use for the server."
+
+  validation {
+    condition     = length(var.image_id) > 4 && substr(var.image_id, 0, 4) == "ami-"
+    error_message = "The image_id value must be a valid AMI id, starting with \"ami-\"."
+  }
+}
+```
+
+- Use a specific `tfvars file`
+
+```
+terraform apply -var-file="testing.tfvars"
+```
 
 <br>
-<br>
+
+## variables: string <a id='14a'></a> ([go to top](#top))
+
+```
+variable "image_id" {
+  type = string
+}
+
+variable "instance_type" {
+    description = "Size of the EC2 instance"
+    type = string
+}
+```
+
+```
+resource "aws_instance" "server" {
+  ami = var.image_id
+  instance_type = var.instance_type
+}
+```
+
+- `terraform.tfvars file`
+
+```
+instance_type      = "t3.micro"
+image_id           = "ami-42895639563865395"
+```
+
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+## variables: list(string) <a id='14b'></a> ([go to top](#top))
+
+```
+variable "availability_zones" {
+  type = list(string)
+}
+```
+```
+resource "aws_subnet" "subnet1" {
+  availability_zone = var.availability_zones[0]
+}
+resource "aws_subnet" "subnet2" {
+  availability_zone = var.availability_zones[1]
+}
+```
+- `terraform.tfvars` file
+```
+availability_zones = ["us-east-1a", "us-east-1b"]
+cidr_block         = "10.0.0.0/16"
+instance_type      = "t3.micro"
+key_name           = "cloudacademydemo"
+```
 
 <br>
 <br>
