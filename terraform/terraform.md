@@ -38,7 +38,7 @@
 - [](#)
 - [](#)
 - [](#)
-- [console, format, output, expressions, provisioner, lookup, length, cidr functions, locals, ariable types, type-object, cudr subnet](#)
+- [console, format, output, expressions, provisioner, lookup, length, cidr functions, locals, ariable types, type-object, cudr subnet, conditional ? 1:0, count, type: bool](#)
 - [go to top](#top)
 
 <br>
@@ -507,67 +507,6 @@ image_id           = "ami-42895639563865395"
 
 <br>
 
-## variables: list(string) <a id='14'></a> ([go to top](#top))
-
-```terraform
-variable "availability_zones" {
-  type = list(string)
-}
-
-variable "security_group_ids" {
-    description = "Security group IDs assigned to the EC2 Instance"
-    type = list(string)
-}
-```
-
-```terraform
-resource "aws_subnet" "subnet1" {
-  availability_zone = var.availability_zones[0]
-}
-
-resource "aws_subnet" "subnet2" {
-  availability_zone = var.availability_zones[1]
-}
-
-resource "aws_instance" "server" {
-    vpc_security_group_ids = var.security_group_ids
-}
-```
-
-- Defining the variable
-
-```terraform
-module "webserver" {
-  security_group_ids = [aws_vpc.prod.default_security_group_id]
-}
-```
-
-- `terraform.tfvars` file
-
-```terraform
-availability_zones = ["us-east-1a", "us-east-1b"]
-```
-
-<br>
-
-## variables: object <a id='14'></a> ([go to top](#top))
-
-```terraform
-
-```
-
-```terraform
-
-```
-
-- `terraform.tfvars file`
-
-```terraform
-
-```
-
-<br>
-
 ## variables: object <a id='14b'></a> ([go to top](#top))
 
 ```terraform
@@ -691,6 +630,7 @@ variable "ami_ids" {
     windows = "ami-0afb7a78e89642197"
   }
 }
+
 variable "os_type" {
     description = "OS to deploy, Linux or Windows"
     type = string
@@ -728,6 +668,34 @@ os_type = "linux"
 ## variables: number <a id='14d'></a> ([go to top](#top))
 
 ```terraform
+variable "num"{
+  type  = number
+  default = 123
+}
+
+variable "asg_max_size" {
+  type    = number
+  default = 2
+}
+```
+
+```terraform
+output "num_value" {
+  value = var.num
+}
+
+resource "aws_autoscaling_group" "asg" {
+  max_size = var.asg_max_size
+
+
+}
+```
+
+<br>
+
+## variables: object <a id='14'></a> ([go to top](#top))
+
+```terraform
 
 ```
 
@@ -743,6 +711,111 @@ os_type = "linux"
 
 <br>
 
+## variables: list(string) <a id='14e'></a> ([go to top](#top))
+
+```terraform
+variable "availability_zones" {
+  type = list(string)
+}
+
+variable "security_group_ids" {
+    description = "Security group IDs assigned to the EC2 Instance"
+    type = list(string)
+}
+```
+
+```terraform
+resource "aws_subnet" "subnet1" {
+  availability_zone = var.availability_zones[0]
+}
+
+resource "aws_subnet" "subnet2" {
+  availability_zone = var.availability_zones[1]
+}
+
+resource "aws_instance" "server" {
+    vpc_security_group_ids = var.security_group_ids
+}
+```
+
+- Defining the variable
+
+```terraform
+module "webserver" {
+  security_group_ids = [aws_vpc.prod.default_security_group_id]
+}
+```
+
+- `terraform.tfvars` file
+
+```terraform
+availability_zones = ["us-east-1a", "us-east-1b"]
+```
+
+<br>
+
+## variables: list(map) <a id='14'></a> ([go to top](#top))
+
+```terraform
+variable "ebs_block_device" {
+  description = "Additional EBS block devices to attach to the instance"
+  type        = list(map(string))
+  default     = []
+}
+```
+
+```terraform
+resource "aws_instance" "server" {
+  # Dynamic blocks can be used for resources that contain repeatable configuration blocks. Instead of repeating several ebs_block_device blocks, a dynamic block is used to simplify the code.
+
+  # This is done by combining the dynamic block with a for_each loop inside. The first line inside the dynamic block is the for_each loop. The loop is iterating through the list of the ebs_block_device variable, which is a list of maps.
+
+  # In the content block, each value of the map is referenced using the lookup function. The logic here is to look for a value in the map variable and if it's not there, set the value to null. The dynamic block will iterate through each map in the list:
+
+  #dynamic block with for_each loop
+  dynamic "ebs_block_device" {
+  for_each = var.ebs_block_device
+    content {
+    delete_on_termination = lookup(ebs_block_device.value, "delete_on_termination", null)
+    device_name           = ebs_block_device.value.device_name
+    encrypted             = lookup(ebs_block_device.value, "encrypted", null)
+    iops                  = lookup(ebs_block_device.value, "iops", null)
+    kms_key_id            = lookup(ebs_block_device.value, "kms_key_id", null)
+    snapshot_id           = lookup(ebs_block_device.value, "snapshot_id", null)
+    volume_size           = lookup(ebs_block_device.value, "volume_size", null)
+    volume_type           = lookup(ebs_block_device.value, "volume_type", null)
+    }
+}
+}
+```
+
+```terraform
+module "server" {
+  ebs_block_device = [
+    {
+    device_name = "/dev/sdh"
+    volume_size = "4"
+    volume_type = "standard"
+    delete_on_termination = "true"
+    },
+    {
+    device_name = "/dev/sdj"
+    volume_size = "4"
+    volume_type = "standard"
+    delete_on_termination = "true"
+    }
+  ]
+
+}
+```
+
+- `terraform.tfvars file`
+
+```terraform
+
+```
+
+<br>
 <br>
 
 <br>
