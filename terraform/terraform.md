@@ -21,7 +21,7 @@
 - [`terraform console`](#13)
 - [variables](#14)
   - [variables: `string`](#14a)
-  - [variables: `list(string)`](#14b)
+  - [variables: `list(string)`](#14)
 - [](#15)
 - [](#16)
 - [](#17)
@@ -507,28 +507,254 @@ image_id           = "ami-42895639563865395"
 
 <br>
 
-## variables: list(string) <a id='14b'></a> ([go to top](#top))
+## variables: list(string) <a id='14'></a> ([go to top](#top))
 
 ```
 variable "availability_zones" {
   type = list(string)
 }
+
+variable "security_group_ids" {
+    description = "Security group IDs assigned to the EC2 Instance"
+    type = list(string)
+}
 ```
+
 ```
 resource "aws_subnet" "subnet1" {
   availability_zone = var.availability_zones[0]
 }
+
 resource "aws_subnet" "subnet2" {
   availability_zone = var.availability_zones[1]
 }
+
+resource "aws_instance" "server" {
+    vpc_security_group_ids = var.security_group_ids
+}
 ```
+
+- Defining the variable
+```
+module "webserver" {
+  security_group_ids = [aws_vpc.prod.default_security_group_id]
+}
+```
+
 - `terraform.tfvars` file
+
 ```
 availability_zones = ["us-east-1a", "us-east-1b"]
-cidr_block         = "10.0.0.0/16"
-instance_type      = "t3.micro"
-key_name           = "cloudacademydemo"
 ```
+
+<br>
+
+## variables: object <a id='14'></a> ([go to top](#top))
+
+```terraform
+
+```
+
+```terraform
+
+```
+
+- `terraform.tfvars file`
+
+```terraform
+
+```
+
+<br>
+
+## variables: object <a id='14b'></a> ([go to top](#top))
+
+```terraform
+variable "disk" {
+  description = "OS image to deploy"
+  type = object({
+    delete_on_termination = bool
+    encrypted = bool
+    volume_size = string
+    volume_type = string
+  })
+} 
+
+variable "docker_ports" {
+  type = list(object({
+    internal = number
+    external = number
+    protocol = string
+  }))
+  default = [
+    {
+      internal = 8300
+      external = 8300
+      protocol = "tcp"
+    }
+  ]
+}
+
+variable "person_with_address" {
+  type = object({ 
+    name = string, 
+    age = number,
+    address = object({
+      line1 = string,
+      line2 = string,
+      county = string,
+      postcode = string
+    })
+  })
+  default = {
+    name = "Jim"
+    age = "21"
+    address = {
+      line1 = "1 the road"
+      line2 = "St Ives"
+      county = "Cambridgeshire"
+      postcode = "CB1 2GB"
+    }
+  }
+}
+```
+
+```terraform
+resource "aws_instance" "server" 
+  root_block_device {
+    delete_on_termination = var.disk.delete_on_termination
+    encrypted = var.disk.encrypted
+    volume_size = var.disk.volume_size
+    volume_type = var.disk.volume_type
+  }
+}
+
+output "person_line1" {
+  value = var.person_with_address["address"]["line1"]
+}
+
+output "person_name" {
+  value = var.person_with_address["name"]
+}
+```
+
+- `terraform.tfvars file`
+
+```
+disk = {
+  delete_on_termination = false
+  encrypted = true
+  volume_size = "20"
+  volume_type = "standard"
+}
+```
+
+<br>
+
+## variables: map <a id='14c'></a> ([go to top](#top))
+
+```terraform
+variable "amis" {
+  type = map(any)
+  default = {
+    "us-east-1" : "ami-09d56f8956ab235b3"
+    "us-east-2" : "ami-0aeb7c931a5a61206"
+  }
+}
+
+variable "region" {
+  type = string
+}
+
+variable "my_map" {
+  type = map(number)
+  default = {
+    "alpha" = 2
+    "bravo" = 3
+  }
+}
+
+variable "my_map" {
+  type = map(string)
+  default = {
+    "alpha" = "ALPHA"
+    "bravo" = "BRAVO"
+  }
+}
+
+variable "ami_ids" { 
+  type = map
+  description = "AMI ID's to deploy"
+  default = {
+    linux = "ami-0d398eb3480cb04e7"
+    windows = "ami-0afb7a78e89642197"
+  }
+}
+variable "os_type" {
+    description = "OS to deploy, Linux or Windows"
+    type = string
+}
+```
+
+```
+resource "aws_instance" "web" {
+  ami = var.amis[var.region]
+}
+
+resource "aws_instance" "server" {
+  ami = lookup(var.ami_ids, var.os_type, null)
+}
+
+# for all values
+output "map" {
+  value = var.my_map
+}
+
+output "alpha_value" {
+  value = var.my_map["alpha"]
+}
+```
+
+- `terraform.tfvars file`
+
+```terraform
+region = "us-east-1"
+os_type = "linux"
+```
+
+<br>
+
+## variables: number <a id='14d'></a> ([go to top](#top))
+
+```terraform
+
+```
+
+```terraform
+
+```
+
+- `terraform.tfvars file`
+
+```terraform
+
+```
+
+<br>
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br>
 <br>
