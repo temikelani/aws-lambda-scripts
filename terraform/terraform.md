@@ -693,28 +693,13 @@ resource "aws_autoscaling_group" "asg" {
 
 <br>
 
-## variables: object <a id='14'></a> ([go to top](#top))
 
-```terraform
-
-```
-
-```terraform
-
-```
-
-- `terraform.tfvars file`
-
-```terraform
-
-```
-
-<br>
 
 ## variables: list(string) <a id='14e'></a> ([go to top](#top))
 
 <details>
 <summary> Expand For Details </summary>
+<br>
 
   ```terraform
   variable "availability_zones" {
@@ -763,6 +748,7 @@ resource "aws_autoscaling_group" "asg" {
 
 <details>
 <summary> Expand For Details </summary>
+<br>
 
 ```terraform
 variable "ebs_block_device" {
@@ -826,6 +812,28 @@ module "server" {
 </details>
 
 <br>
+
+## variables: template <a id='14'></a> ([go to top](#top))
+
+<details>
+<summary> Expand For Details </summary>
+<br>
+
+  ```terraform
+  
+  ```
+  
+  ```terraform
+  
+  ```
+  
+  - `terraform.tfvars file`
+  
+  ```terraform
+</details>
+
+```
+
 <br>
 
 <br>
