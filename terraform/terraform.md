@@ -713,44 +713,49 @@ resource "aws_autoscaling_group" "asg" {
 
 ## variables: list(string) <a id='14e'></a> ([go to top](#top))
 
-```terraform
-variable "availability_zones" {
-  type = list(string)
-}
+<details>
+<summary> Expand For Details </summary>
 
-variable "security_group_ids" {
-    description = "Security group IDs assigned to the EC2 Instance"
+  ```terraform
+  variable "availability_zones" {
     type = list(string)
-}
-```
-
-```terraform
-resource "aws_subnet" "subnet1" {
-  availability_zone = var.availability_zones[0]
-}
-
-resource "aws_subnet" "subnet2" {
-  availability_zone = var.availability_zones[1]
-}
-
-resource "aws_instance" "server" {
-    vpc_security_group_ids = var.security_group_ids
-}
-```
-
-- Defining the variable
-
-```terraform
-module "webserver" {
-  security_group_ids = [aws_vpc.prod.default_security_group_id]
-}
-```
-
-- `terraform.tfvars` file
-
-```terraform
-availability_zones = ["us-east-1a", "us-east-1b"]
-```
+  }
+  
+  variable "security_group_ids" {
+      description = "Security group IDs assigned to the EC2 Instance"
+      type = list(string)
+  }
+  ```
+  
+  ```terraform
+  resource "aws_subnet" "subnet1" {
+    availability_zone = var.availability_zones[0]
+  }
+  
+  resource "aws_subnet" "subnet2" {
+    availability_zone = var.availability_zones[1]
+  }
+  
+  resource "aws_instance" "server" {
+      vpc_security_group_ids = var.security_group_ids
+  }
+  ```
+  
+  - Defining the variable
+  
+  ```terraform
+  module "webserver" {
+    security_group_ids = [aws_vpc.prod.default_security_group_id]
+  }
+  ```
+  
+  - `terraform.tfvars` file
+  
+  ```terraform
+  availability_zones = ["us-east-1a", "us-east-1b"]
+  ```
+  
+</details>
 
 <br>
 
@@ -768,18 +773,19 @@ variable "ebs_block_device" {
 ```
 
 ```terraform
-resource "aws_instance" "server" {
-  # Dynamic blocks can be used for resources that contain repeatable configuration blocks. 
+
+  # Dynamic blocks can be used for resources that contain repeatable configuration blocks.
   # Instead of repeating several ebs_block_device blocks, a dynamic block is used to simplify the code.
 
-  # This is done by combining the dynamic block with a for_each loop inside. 
-  # The first line inside the dynamic block is the for_each loop. 
+  # This is done by combining the dynamic block with a for_each loop inside.
+  # The first line inside the dynamic block is the for_each loop.
   # The loop is iterating through the list of the ebs_block_device variable, which is a list of maps.
 
-  # In the content block, each value of the map is referenced using the lookup function. 
-  # The logic here is to look for a value in the map variable and if it's not there, set the value to null. 
+  # In the content block, each value of the map is referenced using the lookup function.
+  # The logic here is to look for a value in the map variable and if it's not there, set the value to null.
   # The dynamic block will iterate through each map in the list:
 
+resource "aws_instance" "server" {
   #dynamic block with for_each loop
   dynamic "ebs_block_device" {
   for_each = var.ebs_block_device
