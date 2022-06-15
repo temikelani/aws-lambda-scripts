@@ -757,7 +757,7 @@ availability_zones = ["us-east-1a", "us-east-1b"]
 ## variables: list(map) <a id='14'></a> ([go to top](#top))
 
 <details>
-<summary Expand For Details></summary>
+<summary> Expand For Details </summary>
   ```terraform
   variable "ebs_block_device" {
     description = "Additional EBS block devices to attach to the instance"
