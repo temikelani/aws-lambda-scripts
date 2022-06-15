@@ -265,11 +265,19 @@ resource "aws_vpc" "dev" {
 
 # Setup Credentials <a id='8'></a> ([go to top](#top))
 
+- Terraform will puse default cret=dentials set when you run
+``` 
+aws configure
+```
+- Or You can set the credentilas as env vars
+
 ```
 export AWS_ACCESS_KEY_ID=shjakvbslavbdsvbd
 export AWS_SECRET_ACCESS_KEY=hsjalbfhvsalvfsavfuasobv
 terraform refresh
 ```
+
+- Or you can supply tf the path for a specific set of credentials
 
 ```
 provider "aws" {
