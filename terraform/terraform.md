@@ -265,16 +265,31 @@ resource "aws_vpc" "dev" {
 
 # Setup Credentials <a id='8'></a> ([go to top](#top))
 
+- [Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration)
+
 - Terraform will puse default cret=dentials set when you run
-``` 
+
+```
 aws configure
 ```
+
 - Or you can set the credentials as env vars
+
+```
+provider "aws" {}
+```
 
 ```
 export AWS_ACCESS_KEY_ID=shjakvbslavbdsvbd
 export AWS_SECRET_ACCESS_KEY=hsjalbfhvsalvfsavfuasobv
+export AWS_REGION="us-west-2"
 terraform refresh
+terraform plan
+```
+
+```
+export AWS_PROFILE
+AWS_CONFIG_FILE
 ```
 
 - Or you can supply tf the path for a specific set of credentials
@@ -284,6 +299,18 @@ provider "aws" {
   shared_config_files      = ["~/.aws/conf"]
   shared_credentials_files = ["~/.aws/creds"]
   profile                  = "terraform"
+}
+```
+
+- Or `terraform` can Assume a Role
+
+```
+provider "aws" {
+  assume_role {
+    role_arn     = "arn:aws:iam::123456789012:role/ROLE_NAME"
+    session_name = "SESSION_NAME"
+    external_id  = "EXTERNAL_ID"
+  }
 }
 ```
 
