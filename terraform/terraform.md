@@ -480,7 +480,7 @@ terraform apply -var-file="testing.tfvars"
 
 ## variables: string <a id='14a'></a> ([go to top](#top))
 
-```
+```terraform
 variable "image_id" {
   type = string
 }
@@ -491,7 +491,7 @@ variable "instance_type" {
 }
 ```
 
-```
+```terraform
 resource "aws_instance" "server" {
   ami = var.image_id
   instance_type = var.instance_type
@@ -500,7 +500,7 @@ resource "aws_instance" "server" {
 
 - `terraform.tfvars file`
 
-```
+```terraform
 instance_type      = "t3.micro"
 image_id           = "ami-42895639563865395"
 ```
@@ -509,7 +509,7 @@ image_id           = "ami-42895639563865395"
 
 ## variables: list(string) <a id='14'></a> ([go to top](#top))
 
-```
+```terraform
 variable "availability_zones" {
   type = list(string)
 }
@@ -520,7 +520,7 @@ variable "security_group_ids" {
 }
 ```
 
-```
+```terraform
 resource "aws_subnet" "subnet1" {
   availability_zone = var.availability_zones[0]
 }
@@ -535,7 +535,8 @@ resource "aws_instance" "server" {
 ```
 
 - Defining the variable
-```
+
+```terraform
 module "webserver" {
   security_group_ids = [aws_vpc.prod.default_security_group_id]
 }
@@ -543,7 +544,7 @@ module "webserver" {
 
 - `terraform.tfvars` file
 
-```
+```terraform
 availability_zones = ["us-east-1a", "us-east-1b"]
 ```
 
@@ -578,7 +579,7 @@ variable "disk" {
     volume_size = string
     volume_type = string
   })
-} 
+}
 
 variable "docker_ports" {
   type = list(object({
@@ -596,8 +597,8 @@ variable "docker_ports" {
 }
 
 variable "person_with_address" {
-  type = object({ 
-    name = string, 
+  type = object({
+    name = string,
     age = number,
     address = object({
       line1 = string,
@@ -620,7 +621,7 @@ variable "person_with_address" {
 ```
 
 ```terraform
-resource "aws_instance" "server" 
+resource "aws_instance" "server"
   root_block_device {
     delete_on_termination = var.disk.delete_on_termination
     encrypted = var.disk.encrypted
@@ -640,7 +641,7 @@ output "person_name" {
 
 - `terraform.tfvars file`
 
-```
+```terraform
 disk = {
   delete_on_termination = false
   encrypted = true
@@ -682,7 +683,7 @@ variable "my_map" {
   }
 }
 
-variable "ami_ids" { 
+variable "ami_ids" {
   type = map
   description = "AMI ID's to deploy"
   default = {
@@ -696,7 +697,7 @@ variable "os_type" {
 }
 ```
 
-```
+```terraform
 resource "aws_instance" "web" {
   ami = var.amis[var.region]
 }
@@ -743,18 +744,6 @@ os_type = "linux"
 <br>
 
 <br>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <br>
 <br>
