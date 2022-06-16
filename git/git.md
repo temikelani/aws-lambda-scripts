@@ -78,7 +78,7 @@ git add .
 *.ppk
 **/node_modules/
 
-new_user_credentials.csv
+*new_user_credentials.csv
 
 **/.terraform/*
 *.tfstate
@@ -89,7 +89,8 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
-.DS_Store
+*.DS_Store
+*.ipynb_checkpoints
 ```
 
 <br>
