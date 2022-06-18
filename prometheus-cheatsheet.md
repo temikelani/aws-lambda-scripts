@@ -234,6 +234,7 @@ sudo cp alertmanager-0.21.0.linux-amd64/alertmanager.yml /etc/prometheus/alertma
 
 ```
 
+```
 route:
 group_by: [Alertname]
 receiver: email-me
@@ -248,13 +249,13 @@ receivers:
     auth_username: email@gmail.com
     auth_identity: email@gmail.com
     auth_password: emai-password
-
 ```
 
+```
 sudo vim /etc/systemd/system/alertmanager.servi
-
 ```
 
+```
 [Unit]
 Description=Alert Manager
 Wants=network-online.target
@@ -272,11 +273,9 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
 ```
 
 ```
-
 sudo systemctl daemon-reload
 sudo systemctl enable alertmanager
 sudo systemctl start alertmanager
@@ -299,325 +298,282 @@ groups:
 sudo chown -R prometheus:prometheus /etc/prometheus
 
 sudo vim /etc/prometheus/prometheus.yml
+```
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
+
+# Title <a id=''></a> ([go to top](#top))
+
+<br>
+<br>
+<br>
 
 ```
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
-
-# Title <a id=''></a> ([go to top](#top))
-
-
-<br>
-<br>
-<br>
 
 ```

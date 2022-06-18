@@ -1,2 +1,7 @@
-# lambda-scripts
-Lambda scripts for various scenarios in python (and other languages)
+# Cheatsheets
+This Repo contains
+- Cheatsheets
+- AWS IAC templates
+- AWS, CLI Command Templates
+- AWS Lambda scripts for various scenarios
+
