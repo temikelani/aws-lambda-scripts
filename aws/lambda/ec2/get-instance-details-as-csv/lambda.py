@@ -6,7 +6,7 @@ instance_details = []
 
 
 for instance in ec2.instances.all():
-  result = dict()
+  result = {}
 
   result["Instance ID"] = instance.id
   result["Instance State"] = instance.state["Name"]

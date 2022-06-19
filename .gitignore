@@ -2,6 +2,7 @@
 *.pem
 *.ppk
 **/node_modules/
+*.ipynb_checkpoints
 
 new_user_credentials.csv
 

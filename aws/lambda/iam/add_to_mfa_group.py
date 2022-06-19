@@ -12,7 +12,7 @@ EVALUATE_VALUE = 'false'
 GROUP_NAME = 'mfa'
 
 def get_all_users():
-   return [user.get('UserName') for user in  iam.list_users().get('Users')]
+  return [user.get('UserName') for user in  iam.list_users().get('Users')]
 
 def add_to_groups(user):
   return  iam.add_user_to_group(
@@ -26,7 +26,6 @@ def check_user_tags(user):
     for tag in tags:
         if tag.get('Key') == EVALUATE_KEY and tag.get('Value') != EVALUATE_VALUE:
             return user
-   
 
 def init ():
     # will return ['cohort_user_1', 'cohort_user_2', None, None, None]
