@@ -8,10 +8,10 @@
 - [Create New Repo](#1)
 - [Reset Git ignore](#2)
 - [Custom Git Ignore](#3)
-- [](#4)
-- [](#5)
-- [](#6)
-- [](#7)
+- [`git diff`](#4)
+- [`git commit`](#5)
+- [`git log`](#6)
+- [HEAD and Backtracking](#7)
 - [](#8)
 - [](#9)
 - [](#10)
@@ -97,25 +97,69 @@ override.tf.json
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# `git diff` <a id='4'></a> ([go to top](#top))
+
+- If you have added a file to the staging area with
+
+```
+git add .
+```
+
+- but have made a change since adding it. You can check the differences between the working directory and the staging area w
+
+```
+git diff
+```
 
 <br>
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# `git commit` <a id=''></a> ([go to top](#top))
+
+- A commit permanently stores changes from the staging area inside the repository.
+- Standard Conventions for Commit Messages:
+  - Must be in quotation marks
+  - Written in the present tense
+  - Should be brief (50 characters or less) when using -m
+  - `ADD More git commit convenstions`
+
+```
+git commit -m "Complete first line of dialogue"
+```
+
+
 
 <br>
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# `git log` <a id=''></a> ([go to top](#top))
+- Often with Git, you’ll need to refer back to an earlier version of a project. 
+- Commits are stored chronologically in the repository and can be viewed with:
+
+```
+git log
+```
 
 <br>
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# HEAD and Backtracking <a id=''></a> ([go to top](#top))
+- In Git, the commit you are currently on is known as the `HEAD commit`. `In many cases, the most recently made commit is the HEAD commit`.
+
+```bash
+git show HEAD
+```
+
+- If you commited a change onf a file `filename` but want to discard that change run
+
+```bash
+git checkout HEAD filename
+```
+
+- It will restore the file in your working directory to look exactly as it did when you last made a commit.
 
 <br>
 <br>
