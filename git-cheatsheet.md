@@ -5,15 +5,15 @@
 
 # Contents
 
-- [Create New Repo](#1)
-- [Reset Git ignore](#2)
-- [Custom Git Ignore](#3)
+- [`git init` - create new repo](#1)
+- [`.gitignore` - reset git ignore](#2)
+- [`.gitignore` - custom git ignore](#3)
 - [`git diff`](#4)
 - [`git commit`](#5)
 - [`git log`](#6)
-- [HEAD, `git checkout`, `git reset` and Backtracking ](#7)
-- [](#8)
-- [](#9)
+- [`HEAD`, `git checkout`, `git reset` and backtracking](#7)
+- [`git stash` ](#8)
+- [`git alias`](#9)
 - [](#10)
 - [](#11)
 - [](#12)
@@ -42,11 +42,12 @@
 <br>
 <br>
 
-# Create New Repo <a id=''></a> ([go to top](#top))
+# `git init` - create new repo <a id=''></a> ([go to top](#top))
 
 - Create a new repo `new-repo`
 
   ```bash
+  cd new-repo
   git init
   git add .
   git commit -m "first commit"
@@ -59,7 +60,7 @@
 <br>
 <br>
 
-# Reset Git ignore <a id=''></a> ([go to top](#top))
+# `.gitignore` - reset git ignore <a id=''></a> ([go to top](#top))
 
 ```
 git rm -rf --cached .
@@ -70,7 +71,7 @@ git add .
 <br>
 <br>
 
-# Custom Git Ignore <a id='3'></a> ([go to top](#top))
+# `.gitignore` - custom git ignore <a id='3'></a> ([go to top](#top))
 
 ```
 *.cer
