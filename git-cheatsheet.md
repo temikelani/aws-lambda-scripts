@@ -128,14 +128,13 @@ git diff
 git commit -m "Complete first line of dialogue"
 ```
 
-
-
 <br>
 <br>
 <br>
 
 # `git log` <a id=''></a> ([go to top](#top))
-- Often with Git, you’ll need to refer back to an earlier version of a project. 
+
+- Often with Git, you’ll need to refer back to an earlier version of a project.
 - Commits are stored chronologically in the repository and can be viewed with:
 
 ```
@@ -147,6 +146,7 @@ git log
 <br>
 
 # HEAD, `git checkout`, `git reset` and Backtracking <a id=''></a> ([go to top](#top))
+
 - In Git, the commit you are currently on is known as the `HEAD commit`. `In many cases, the most recently made commit is the HEAD commit`.
 
 ```bash
@@ -155,8 +155,9 @@ git show HEAD
 
 - If you `MADE` a change on a file `filename`
 - `AND HAVE NOT COMMITED IT`
--  but want to discard that change run `THE BLOCK BELOW`
+- but want to discard that change run `THE BLOCK BELOW`
 - It will `restore the file in your working directory` to `look exactly as it did when you last made a commit.`
+- All changed that deviate from the commit will be instantly removed
 
 ```bash
 git checkout HEAD filename
@@ -166,12 +167,15 @@ git checkout HEAD filename
 - `AND HAVE STAGED IT BUT NOT COMMITED IT`
 - but want to discard that change run `THE BLOCK BELOW`
 - It will `unstage that file from the staging area`
-- `IT WILL RESET the file in the STAGING AREA` to be the `same as the HEAD commit`. 
-- `It WILL NOT` `discard file changes from the working directory`, it `just removes them from the staging area.`
+- `IT WILL RESET the file in the STAGING AREA` to be the `same as the HEAD commit`.
+- `It WILL NOT` `discard file changes from the working directory`, it `just removes them from the staging area.` sajfvlanvjpfadvnfip
+- Use `git status` before and after running to see difference
 
 ```
 git reset HEAD filename
 ```
+
+- If you want to return to abc
 
 <br>
 <br>
