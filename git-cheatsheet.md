@@ -146,20 +146,32 @@ git log
 <br>
 <br>
 
-# HEAD and Backtracking <a id=''></a> ([go to top](#top))
+# HEAD, `git checkout`, `git reset` and Backtracking <a id=''></a> ([go to top](#top))
 - In Git, the commit you are currently on is known as the `HEAD commit`. `In many cases, the most recently made commit is the HEAD commit`.
 
 ```bash
 git show HEAD
 ```
 
-- If you commited a change onf a file `filename` but want to discard that change run
+- If you `MADE` a change on a file `filename`
+- `AND HAVE NOT COMMITED IT`
+-  but want to discard that change run `THE BLOCK BELOW`
+- It will `restore the file in your working directory` to `look exactly as it did when you last made a commit.`
 
 ```bash
 git checkout HEAD filename
 ```
 
-- It will restore the file in your working directory to look exactly as it did when you last made a commit.
+- If you `MADE` a change on a file `filename`
+- `AND HAVE STAGED IT BUT NOT COMMITED IT`
+- but want to discard that change run `THE BLOCK BELOW`
+- It will `unstage that file from the staging area`
+- `IT WILL RESET the file in the STAGING AREA` to be the `same as the HEAD commit`. 
+- `It WILL NOT` `discard file changes from the working directory`, it `just removes them from the staging area.`
+
+```
+git reset HEAD filename
+```
 
 <br>
 <br>
