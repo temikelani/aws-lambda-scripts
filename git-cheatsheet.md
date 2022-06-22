@@ -11,7 +11,7 @@
 - [`git diff`](#4)
 - [`git commit`](#5)
 - [`git log`](#6)
-- [HEAD and Backtracking](#7)
+- [HEAD, `git checkout`, `git reset` and Backtracking ](#7)
 - [](#8)
 - [](#9)
 - [](#10)
@@ -168,14 +168,26 @@ git checkout HEAD filename
 - but want to discard that change run `THE BLOCK BELOW`
 - It will `unstage that file from the staging area`
 - `IT WILL RESET the file in the STAGING AREA` to be the `same as the HEAD commit`.
-- `It WILL NOT` `discard file changes from the working directory`, it `just removes them from the staging area.` sajfvlanvjpfadvnfip
+- `It WILL NOT` `discard file changes from the working directory`, it `just removes them from the staging area.`
 - Use `git status` before and after running to see difference
 
-```
+```bash
 git reset HEAD filename
 ```
 
-- If you want to return to abc
+- If you `MADE` a change on a file `filename`
+- `AND HAVE COMMITED IT`
+- but want to discard that change
+- `Without affecting the working directory`
+  - `It WILL NOT` `discard file changes from the working directory`, it `just removes them from the staging area.`
+- run `THE BLOCK BELOW`
+- verify with `git diff` that your repo is back to the specified commit
+- commit_SHA = first 7 characters of the SHA of a previous commit
+- commit_SHA now becomes `new HEAD`
+
+```bash
+git reset commit_SHA
+```
 
 <br>
 <br>
