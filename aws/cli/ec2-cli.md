@@ -8,7 +8,7 @@
 - [AMI: `describe-images`](#1)
 - [AMI: SSM Latest Amazon Lnux AMI](#2)
 - [AMI / INSTANCE: Locate authorized keys](#3)
-- [](#4)
+- [AMI: `modify-image-attribute`: Make image public](#4)
 - [](#5)
 - [](#6)
 - [](#7)
@@ -44,107 +44,17 @@
 
 # AMI: `describe-images` <a id='1'></a> ([go to top](#top))
 
-- [Documentation](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/describe-images.html)
+- [CLI Docs](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/describe-images.html)
 - `Omitting the --owners flag` from the describe-images command` returns all images for which you have launch permissions, regardless of ownership.`
 
 ```bash
 aws ec2  describe-images
---executable-users <value>  \
---filters <value> \
---image-ids <value> \
---owners <value> \
---include-deprecated | --no-include-deprecated \
---dry-run | --no-dry-run \
---cli-input-json | --cli-input-yaml \
---generate-cli-skeleton <value> \
---query
-```
-
-- Examples
-
-```bash
-aws ec2  describe-images
 --executable-users all | self \
---filters "Name=platform,Values=windows" "Name=root-device-type,Values=ebs" "Name=tag:Type,Values=Custom"\
+--filters "Name=platform,Values=windows" "Name=root-device-type,Values=ebs" "Name=tag:Type,Values=Custom" \
 --image-ids ami-065efef2c739d613b \
 --owners self amazon 123456789012 \
 --query 'Images[*].[ImageId]' \
 --output json
-```
-
-- Output
-
-```json
-{
-  "Images": [
-    {
-      "Architecture": "x86_64",
-      "CreationDate": "2022-06-14T19:44:18.000Z",
-      "ImageId": "ami-065efef2c739d613b",
-      "ImageLocation": "amazon/amzn2-ami-hvm-2.0.20220606.1-x86_64-gp2",
-      "ImageType": "machine",
-      "Public": true,
-      "OwnerId": "137112412989",
-      "PlatformDetails": "Linux/UNIX",
-      "UsageOperation": "RunInstances",
-      "State": "available",
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/xvda",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "SnapshotId": "snap-0c87771c8e09de699",
-            "VolumeSize": 8,
-            "VolumeType": "gp2",
-            "Encrypted": false
-          }
-        }
-      ],
-      "Description": "Amazon Linux 2 AMI 2.0.20220606.1 x86_64 HVM gp2",
-      "EnaSupport": true,
-      "Hypervisor": "xen",
-      "ImageOwnerAlias": "amazon",
-      "Name": "amzn2-ami-hvm-2.0.20220606.1-x86_64-gp2",
-      "RootDeviceName": "/dev/xvda",
-      "RootDeviceType": "ebs",
-      "SriovNetSupport": "simple",
-      "VirtualizationType": "hvm",
-      "DeprecationTime": "2024-06-14T19:44:18.000Z"
-    }
-  ]
-}
-```
-
-```yaml
-Images:
-  - Architecture: x86_64
-    BlockDeviceMappings:
-      - DeviceName: /dev/xvda
-        Ebs:
-          DeleteOnTermination: true
-          Encrypted: false
-          SnapshotId: snap-0c87771c8e09de699
-          VolumeSize: 8
-          VolumeType: gp2
-    CreationDate: "2022-06-14T19:44:18.000Z"
-    DeprecationTime: "2024-06-14T19:44:18.000Z"
-    Description: Amazon Linux 2 AMI 2.0.20220606.1 x86_64 HVM gp2
-    EnaSupport: true
-    Hypervisor: xen
-    ImageId: ami-065efef2c739d613b
-    ImageLocation: amazon/amzn2-ami-hvm-2.0.20220606.1-x86_64-gp2
-    ImageOwnerAlias: amazon
-    ImageType: machine
-    Name: amzn2-ami-hvm-2.0.20220606.1-x86_64-gp2
-    OwnerId: "137112412989"
-    PlatformDetails: Linux/UNIX
-    Public: true
-    RootDeviceName: /dev/xvda
-    RootDeviceType: ebs
-    SriovNetSupport: simple
-    State: available
-    UsageOperation: RunInstances
-    VirtualizationType: hvm
 ```
 
 <br>
@@ -189,7 +99,7 @@ AmiId:
 
 - `cd home/ec2-user`
 
-```
+```bash
 sudo find / -name "authorized_keys" -print -exec cat {} \;
 ```
 
@@ -197,7 +107,34 @@ sudo find / -name "authorized_keys" -print -exec cat {} \;
 <br>
 <br>
 
-# Title <a id=''></a> ([go to top](#top))
+# AMI: `modify-image-attribute`: Make image public/private <a id='4'></a> ([go to top](#top))
+
+- [Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html#sharingamis-cli)
+- [CLI Docs](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/modify-image-attribute.html)
+
+```bash
+aws ec2 modify-image-attribute \
+--image-id ami-0abcdef1234567890 \
+--launch-permission "Add=[{Group=all}]"
+```
+
+```bash
+aws ec2 modify-image-attribute \
+--image-id ami-0abcdef1234567890 \
+--launch-permission "Remove=[{Group=all}]"
+```
+
+```bash
+aws ec2 modify-image-attribute \
+    --image-id ami-5731123e \
+    --launch-permission "Add=[{UserId=123456789012}]"
+```
+
+```
+aws ec2 modify-image-attribute \
+    --image-id ami-5731123e \
+    --launch-permission "Remove=[{UserId=123456789012}]"
+```
 
 <br>
 <br>
